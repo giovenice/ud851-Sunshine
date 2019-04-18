@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -223,6 +224,21 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
 
         // TODO (2) Launch the map when the map menu item is clicked
 
+        if (id == R.id.open_map){
+            String address = "Via tevere 37,Rivoli 10098 italia";
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("geo")
+                    .path("0,0")
+                    .appendQueryParameter("q", address);
+
+            Uri uri = builder.build();
+
+            Intent geoIntent = new Intent(Intent.ACTION_VIEW);
+            geoIntent.setData(uri);
+            if(geoIntent.resolveActivity(getPackageManager())!=null){
+                startActivity(geoIntent);
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 }
