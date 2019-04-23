@@ -181,6 +181,8 @@ public class MainActivity extends AppCompatActivity implements
                 URL weatherRequestUrl = NetworkUtils.buildUrl(locationQuery);
 
                 try {
+                    Log.d(TAG +"loadInBackground","sto nel try catch pronto per caricare i dati");
+
                     String jsonWeatherResponse = NetworkUtils
                             .getResponseFromHttpUrl(weatherRequestUrl);
 
